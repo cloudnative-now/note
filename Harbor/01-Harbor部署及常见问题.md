@@ -90,7 +90,7 @@ storage:
     secure: true   # 指定是否通过ssl传输数据到bucket
     bucket: Bucket 名称  
     rootdirectory: 指定oss下面某路径作为存储目录
-​
+
 # 保持默认配置
 trivy:
   ignore_unfixed: false
@@ -228,7 +228,7 @@ sed -i '/X-Forwarded-Proto/d' common/config/nginx/nginx.conf
 查看slb的健康检查日志提示以下问题：
 
 ```plain
-[10.225.12.214]:80 to 10.225.6.203:80 abnormal; cause: check protocol http error
+[x.x.x.x]:80 to x.x.x.x:80 abnormal; cause: check protocol http error
 ```
 **排查**
 >slb 健康检查异常报错：[https://www.sites-help.com/aliyun/1575843803.html](https://www.sites-help.com/aliyun/1575843803.html)
@@ -236,10 +236,10 @@ check protocol http error 表示响应中HTTP status code不是用户指定的(�
 
 ```plain
 1、在harbor应用服务器上使用NC检测，发现结果返回的状态码确实为400
-echo -e 'HEAD /harbor/sign-in HTTP/1.0\r\n' | nc -t 10.225.6.203 80
+echo -e 'HEAD /harbor/sign-in HTTP/1.0\r\n' | nc -t harbor_ip 80
 ​
 2、增加Host后，结果返回的状态码为200
-echo -e ‘HEAD /harbor/sign-in HTTP/1.0\r\nHost: harbor.mydomian.com\r\n\r\n’ | nc -t 10.225.6.203 80
+echo -e ‘HEAD /harbor/sign-in HTTP/1.0\r\nHost: harbor.mydomian.com\r\n\r\n’ | nc -t harbor_ip 80
 ```
 **解决**
 将阿里云slb的健康检查中增加”健康检查域名：harbor.mydomian.com“
