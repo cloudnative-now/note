@@ -203,7 +203,7 @@ docker-compose up -d
 ```shell
 $ vim /etc/docker/daemon.json 
 {
-    "insecure-registries": ["harbor.djicorp.com"]
+    "insecure-registries": ["harbor.mydomian.com"]
 }
 # 重载docker服务
 $ systemctl reload docker
@@ -211,7 +211,7 @@ $ systemctl reload docker
 绑定hosts
 ```shell
 $ vim /etc/hosts
-[ip] harbor.djicorp.com
+[ip] harbor.mydomian.com
 ```
 ### harbor常见问题
 
@@ -239,10 +239,10 @@ check protocol http error 表示响应中HTTP status code不是用户指定的(�
 echo -e 'HEAD /harbor/sign-in HTTP/1.0\r\n' | nc -t 10.225.6.203 80
 ​
 2、增加Host后，结果返回的状态码为200
-echo -e ‘HEAD /harbor/sign-in HTTP/1.0\r\nHost: harbor.djicorp.com\r\n\r\n’ | nc -t 10.225.6.203 80
+echo -e ‘HEAD /harbor/sign-in HTTP/1.0\r\nHost: harbor.mydomian.com\r\n\r\n’ | nc -t 10.225.6.203 80
 ```
 **解决**
-将阿里云slb的健康检查中增加”健康检查域名： hc-harbor.djicorp.com“
+将阿里云slb的健康检查中增加”健康检查域名：harbor.mydomian.com“
 
 #### **harbor 登录状态时好时坏**
 
