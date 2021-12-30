@@ -14,4 +14,4 @@
 
 #### Docker架构
 
-![image-20211228121037141](/Users/chunlin.li/Library/Application Support/typora-user-images/image-20211228121037141.png)
+![image-20211228121037141](../images/image-20211228121037141.png)
