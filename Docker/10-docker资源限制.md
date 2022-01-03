@@ -234,7 +234,7 @@ KiB Swap:        0 total,        0 free,        0 used.   159620 avail Mem
 18487 root      20   0    6896   2048    228 R  24.8  0.2   0:38.26 stress-ng-cpu                                                                                                                          
 18489 root      20   0    6896   2048    228 R  24.8  0.2   0:38.26 stress-ng-cpu
 ```
-####4) 基于cpu-shares对cpu进行切分
+#### 4) 基于cpu-shares对cpu进行切分
 启动两个容器，stress1 的 `--cpu-shares` 值为1000 ， stress2 的`--cpu-shares` 为500，观察最终效果，`--cpu-shares` 值为1000 的 stress1的CPU 利用率基本是`--cpu-shares` 为500 的 stress1的`2`倍：
 ```
 $ docker run -it --rm --name stress1 --cpu-shares 1000 lorel/docker-stress-ng --cpu 2 --vm 2
@@ -255,6 +255,7 @@ $ cat /sys/fs/cgroup/cpu,cpuacct/docker/容器ID/cpu.shares
 500
 ```
 **动态修改CPU shares的值**
+
 `--cpu-shares` 的值可以在宿主机cgroup 动态修改，修改完成后立即生效，其值可以调大也可以减小。
 ```
 # 将stress2的CPU shares设置为2000
