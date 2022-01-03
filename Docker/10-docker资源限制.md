@@ -171,7 +171,7 @@ KiB Swap:        0 total,        0 free,        0 used.   157200 avail Mem
 18000 root      20   0    6900   2096    268 R  49.5  0.2   1:54.53 stress-ng-cpu                                                                                                                          
 18002 root      20   0  268400 262244    296 R  49.5 25.8   1:54.63 stress-ng-vm        
 ```
-####2) 限制容器CPU
+#### 2) 限制容器CPU
 只给容器分配最多1核宿主机CPU 利用率
 ```
 $ docker run -it --rm --name stress1 --cpus 1 lorel/docker-stress-ng --cpu 2 --vm 2
